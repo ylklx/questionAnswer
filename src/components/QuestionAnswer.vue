@@ -105,7 +105,6 @@ h1 {
   height: auto;
   overflow-y: auto;
   padding: 0;
-  //border-bottom: 2px solid #44c7e6;
 }
 
 .message-bubble {
@@ -113,6 +112,7 @@ h1 {
   margin: 15px 0;
   display: flex;
   align-items: flex-start;
+  border-radius: 15px;
 }
 
 .message-bubble p {
