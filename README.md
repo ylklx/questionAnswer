@@ -1,6 +1,7 @@
 # untitled
 
 ## Project setup
+(npm init -y)
 ```
 npm install
 ```
