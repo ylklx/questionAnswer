@@ -59,11 +59,12 @@ export default {
         alert("请输入内容！");
         return;
       }
-      this.addUserMessage(this.messageInput);
+      const messageToSend = this.messageInput;
+      this.addUserMessage(messageToSend);
       this.messageInput = '';
 
-      //axios.post是一个用于发送HTTP POST请求的函数，url是请求的服务器的URL，data 是你要发送到服务器的数据
-      axios.post('/chat', { prompt: JSON.stringify(this.messageInput) })
+      //axios.post('localhost:8070/query?question', { prompt: JSON.stringify(this.messageInput) })
+      axios.get('localhost:8070/query', { params: { question: JSON.stringify(messageToSend)} })
           .then(response => {
             this.addBotMessage(response.data.content);
           })
