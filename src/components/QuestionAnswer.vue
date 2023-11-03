@@ -66,8 +66,9 @@ export default {
       this.messageInput = '';
 
       //axios.post('localhost:8070/query?question', { prompt: JSON.stringify(this.messageInput) })
-      axios.get('http://localhost:8070/query', { params: { question: JSON.stringify(messageToSend)} })
+      axios.get('http://127.0.0.1:8070/query', { params: { question: JSON.stringify(messageToSend)} })
           .then(response => {
+            console.log(response.data);
             this.addBotMessage(response.data);
           })
           // eslint-disable-next-line no-unused-vars
