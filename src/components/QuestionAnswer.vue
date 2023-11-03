@@ -29,6 +29,7 @@
 
 <script>
 import axios from 'axios';
+//axios.defaults.baseURL = '/proxy_url';
 
 export default {
   data() {
@@ -55,7 +56,8 @@ export default {
       });
     },
     sendMessage() {
-      if (this.messageInput.length === 0) {
+      if (this.messageInput.length === 0 || this.messageInput === '\n') {
+        this.messageInput = '';
         alert("请输入内容！");
         return;
       }
@@ -64,9 +66,9 @@ export default {
       this.messageInput = '';
 
       //axios.post('localhost:8070/query?question', { prompt: JSON.stringify(this.messageInput) })
-      axios.get('localhost:8070/query', { params: { question: JSON.stringify(messageToSend)} })
+      axios.get('http://localhost:8070/query', { params: { question: JSON.stringify(messageToSend)} })
           .then(response => {
-            this.addBotMessage(response.data.content);
+            this.addBotMessage(response.data);
           })
           // eslint-disable-next-line no-unused-vars
           .catch(error => {
